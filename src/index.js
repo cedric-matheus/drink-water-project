@@ -10,6 +10,7 @@ const findDayView = document.getElementById("findDay");
 const userForm = document.getElementById("userDataForm");
 const themeForm = document.getElementById("themeForm");
 const drinkWaterForm = document.getElementById("drinkWaterForm");
+const findDayForm = document.getElementById("findDayForm");
 
 const findDayLink = document.getElementById("findDayLink");
 const themeLink = document.getElementById("themeLink");
@@ -34,22 +35,26 @@ function setTheme() {
   }
 }
 
-function refreshCurrentDayViewData() {
-  const currentDayData = DayService.getCurrentDayData();
+function refreshDayViewData(dayData, current) {
+  const dateElement = document.getElementById((current ? "current" : "find") + "DayDate");
+  const totalWaterElement = document.getElementById((current ? "current" : "find") + "DayTotalWater");
+  const drunkWaterDifferenceElement = document.getElementById((current ? "current" : "find") + "DayDrunkWaterDifference");
+  const totalDrunkWaterElement = document.getElementById((current ? "current" : "find") + "DayTotalDrunkWater");
 
-  const dateElement = document.getElementById("currentDayDate");
-  const totalWaterElement = document.getElementById("currentDayTotalWater");
-  const drunkWaterDifferenceElement = document.getElementById("currentDayDrunkWaterDifference");
-  const totalDrunkWaterElement = document.getElementById("currentDayTotalDrunkWater");
+  const totalWaterText = dayData ? `Total de água no dia: ${dayData.totalObjectiveWater[0]}ml a ${dayData.totalObjectiveWater[1]}ml` : '';
+  const drunkWaterDifferenceText = dayData ? `Total de água restante: ${dayData.waterDrunkDifference[0]}ml a ${dayData.waterDrunkDifference[1]}ml` : '';
+  const totalDrunkWaterText = dayData? `Total de água ingerido: ${dayData.totalWaterDrunk}ml` : '';
 
-  const totalWaterText = `Total de água no dia: ${currentDayData.totalObjectiveWater[0]}ml a ${currentDayData.totalObjectiveWater[1]}ml`;
-  const drunkWaterDifferenceText = `Total de água restante: ${currentDayData.waterDrunkDifference[0]}ml a ${currentDayData.waterDrunkDifference[1]}ml`;
-  const totalDrunkWaterText = `Total de água ingerido: ${currentDayData.totalWaterDrunk}ml`;
-
-  dateElement.innerText = currentDayData.date;
+  dateElement.innerText = dayData?.date || '';
   totalWaterElement.innerText = totalWaterText;
   drunkWaterDifferenceElement.innerText = drunkWaterDifferenceText;
   totalDrunkWaterElement.innerText = totalDrunkWaterText;
+}
+
+function refreshCurrentDayViewData() {
+  const currentDayData = DayService.getCurrentDayData();
+
+  refreshDayViewData(currentDayData, true);
 }
 
 function hiddenViews() {
@@ -115,6 +120,18 @@ function submitThemeForm(event){
   refreshViews();
 }
 
+function submitFindDayForm(event){
+  event.preventDefault();
+
+  const data = new FormData(event.target);
+  const dataObject = Object.fromEntries(data.entries());
+  const dayDateString = DayService.getDateString(dataObject.dayDate);
+
+  const dayData = DayService.getDayData(dayDateString);
+
+  refreshDayViewData(dayData);
+}
+
 function submitDrinkWaterForm(event){
   event.preventDefault();
 
@@ -162,6 +179,7 @@ function currentDayLinkClick(event){
 userForm.addEventListener("submit", submitUserForm);
 themeForm.addEventListener("submit", submitThemeForm);
 drinkWaterForm.addEventListener("submit", submitDrinkWaterForm);
+findDayForm.addEventListener("submit", submitFindDayForm);
 
 findDayLink.addEventListener("click", findDayLinkClick);
 themeLink.addEventListener("click", themeLinkClick);
