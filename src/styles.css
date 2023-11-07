@@ -1,3 +1,17 @@
+:root {
+  --textColor: #000000;
+  --backgroundColor: #ffffff;
+
+  --darkA1BgColor: rgba(0,0,0,0.1);
+  --darkA3BgColor: rgba(0,0,0,0.3);
+
+  --lightA1BgColor: rgba(255,255,255,0.1);
+  --lightA3BgColor: rgba(255,255,255,0.3);
+
+  --a1BgColor: var(--darkA1BgColor);
+  --a3BgColor: var(--darkA3BgColor);
+}
+
 body, html {
   margin: 0px;
   padding: 0px;
@@ -9,16 +23,19 @@ body {
   justify-content: center;
   width: 100vw;
   height: 100vh;
+
+  color: var(--textColor);
+  background-color: var(--backgroundColor);
 }
 
 .main {
-  background-color: rgba(0,0,0,0.1);
+  background-color: var(--a1BgColor);
   width: 50%;
   height: 50%;
 }
 
 .main > .header {
-  background-color: rgba(0,0,0,0.1);
+  background-color: var(--a1BgColor);
   height: 10%;
   display: flex;
   align-items: center;
@@ -26,7 +43,7 @@ body {
 }
 
 .main > .body {
-  background-color: rgba(0,0,0,0.3);
+  background-color: var(--a3BgColor);
   height: 80%;
   display: flex;
   align-items: center;
@@ -35,7 +52,7 @@ body {
 }
 
 .main > .footer {
-  background-color: rgba(0,0,0,0.1);
+  background-color: var(--a1BgColor);
   height: 10%;
   display: flex;
   align-items: center;
