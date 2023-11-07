@@ -13,8 +13,7 @@ class DayService {
   constructor() {
     const currentDate = new Date();
     const currentDayIsoString = currentDate.toISOString().split('T');
-    const currentDayDateIsoString = currentDayIsoString[0].split('-');
-    const currentDateString = `${currentDayDateIsoString[2]}/${currentDayDateIsoString[1]}/${currentDayDateIsoString[0]}`;
+    const currentDateString = this.getDateString(currentDayIsoString[0]);
 
     const localDayData = DayDb.readDay(currentDateString);
 
@@ -98,6 +97,17 @@ class DayService {
   getCurrentDayData() {
     return {...this.#dayData};
   };
+
+  /**
+   * Retorna uma string de data válida a partir de uma ISO
+   * @param {string} IsoString ISO Date String
+   */
+  getDateString(IsoString) {
+    const dayDateIsoString = IsoString.split('-');
+    const dayDateString = `${dayDateIsoString[2]}/${dayDateIsoString[1]}/${dayDateIsoString[0]}`;
+
+    return dayDateString
+  }
 };
 
 const service = new DayService();
