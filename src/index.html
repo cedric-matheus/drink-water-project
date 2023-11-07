@@ -1,11 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="./styles.css">
+
   <title>Drink Water!</title>
 </head>
 <body>
-  Drink Water!
+  
+  <div class="main">
+    <header class="header">
+      <h1>Drink Water!</h1>
+    </header>
+
+    
+    <section class="body">
+      <!-- Dados do usuário -->
+      <div id="userData">
+        <form id="userDataForm">
+          <label for="userWeight">Peso em Kg:</label><br>
+          <input type="number" id="userWeight" name="userWeight" value="70.00" step="0.01"><br>
+          <br>
+
+          <label for="userDailyPhysicalActivity">Nível de atividade física diária:</label><br>
+          <select id="userDailyPhysicalActivity" name="userDailyPhysicalActivity">
+            <option value="0">Baixo</option>
+            <option value="1">Moderado</option>
+            <option value="2">Alto</option>
+          </select><br>
+          <br>
+
+          <input type="submit" value="Salvar">
+        </form> 
+      </div>
+    </section>
+
+    <footer class="footer">
+      Não esqueça de beber água!
+    </footer>
+  </div>
+  <script>
+    function submitForm(event){
+      event.preventDefault();
+
+      const data = new FormData(event.target);
+      const dataObject = Object.fromEntries(data.entries());
+
+      console.log(event);
+      console.log(data);
+      console.log(dataObject);
+    }
+
+    const userForm = document.getElementById("userDataForm");
+
+    userForm.addEventListener("submit", submitForm);
+  </script>
 </body>
 </html>

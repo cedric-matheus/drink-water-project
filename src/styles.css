@@ -1,0 +1,43 @@
+body, html {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.main {
+  background-color: rgba(0,0,0,0.1);
+  width: 50%;
+  height: 50%;
+}
+
+.main > .header {
+  background-color: rgba(0,0,0,0.1);
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main > .body {
+  background-color: rgba(0,0,0,0.3);
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.main > .footer {
+  background-color: rgba(0,0,0,0.1);
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
