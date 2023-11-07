@@ -12,19 +12,21 @@ class DayService {
    */
   constructor() {
     const currentDate = new Date();
-    const currentDayDate = `${currentDate.getMonth()+1}/${currentDate.getDate()}/${currentDate.getFullYear()}`
+    const currentDayIsoString = currentDate.toISOString().split('T');
+    const currentDayDateIsoString = currentDayIsoString[0].split('-');
+    const currentDateString = `${currentDayDateIsoString[2]}/${currentDayDateIsoString[1]}/${currentDayDateIsoString[0]}`;
 
-    const localDayData = DayDb.readDay(currentDayDate);
+    const localDayData = DayDb.readDay(currentDateString);
 
     if(localDayData)
       this.#dayData = {...localDayData};
     else {
       /** @type {DayDb.Day} */
       const newDayData = {
-        date: currentDayDate,
-        totalObjectiveWater: 0,
-        totalWaterDrunk: 0,
-        waterDrunkDifference: 0,
+        date: currentDateString,
+        totalObjectiveWater: undefined,
+        totalWaterDrunk: undefined,
+        waterDrunkDifference: undefined,
       };
 
       this.#dayData = {...newDayData};
@@ -53,7 +55,7 @@ class DayService {
       waterDrunkDifference: userTotalWaterRange,
     }
 
-    this.#dayData = newDayData;
+    this.#dayData = {...newDayData};
 
     this.#updateDb();
   };
