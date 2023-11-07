@@ -54,6 +54,25 @@
           </form>
         </div> 
       </div>
+
+      <!-- Buscar Dia -->
+      <div id="findDay">
+        <div>
+          <h2>07/11/2023</h2>
+          <h3>Total de água no dia: 2000ml a 2640ml</h3>
+          <h3>Total de água restante: 1400ml a 2040ml</h3>
+          <h3>Total de água ingerido: 600ml</h3>
+        </div>
+        <div>
+          <form id="findDayForm">
+            <label for="dayDate">Total de água bebida em ml:</label><br>
+            <input type="date" id="dayDate" name="dayDate" value="2023-11-07"><br>
+            <br>
+
+            <input type="submit" value="Buscar">
+          </form>
+        </div> 
+      </div>
     </section>
 
     <footer class="footer">
@@ -74,9 +93,11 @@
 
     const userForm = document.getElementById("userDataForm");
     const drinkWaterForm = document.getElementById("drinkWaterForm");
+    const findDayForm = document.getElementById("findDayForm");
 
     userForm.addEventListener("submit", submitForm);
     drinkWaterForm.addEventListener("submit", submitForm);
+    findDayForm.addEventListener("submit", submitForm);
   </script>
 </body>
 </html>
