@@ -5,10 +5,16 @@ import DayService from './services/day.js';
 const userDataView = document.getElementById("userData");
 const themeView = document.getElementById("theme");
 const currentDayView = document.getElementById("currentDay");
+const findDayView = document.getElementById("findDay");
 
 const userForm = document.getElementById("userDataForm");
 const themeForm = document.getElementById("themeForm");
 const drinkWaterForm = document.getElementById("drinkWaterForm");
+
+const findDayLink = document.getElementById("findDayLink");
+const themeLink = document.getElementById("themeLink");
+const userDataLink = document.getElementById("userDataLink");
+const currentDayLink = document.getElementById("currentDayLink");
 
 function setTheme() {
   const themeData = ThemeService.getThemeData();
@@ -50,6 +56,7 @@ function hiddenViews() {
   userDataView.style.display = "none";
   themeView.style.display = "none";
   currentDayView.style.display = "none";
+  findDayView.style.display = "none";
 }
 
 function refreshViews() {
@@ -119,9 +126,47 @@ function submitDrinkWaterForm(event){
   refreshViews();
 }
 
+function findDayLinkClick(event){
+  event.preventDefault();
+  
+  hiddenViews();
+
+  findDayView.style.display = "block";
+}
+
+function themeLinkClick(event){
+  event.preventDefault();
+  
+  hiddenViews();
+
+  themeView.style.display = "block";
+}
+
+function userDataLinkClick(event){
+  event.preventDefault();
+  
+  hiddenViews();
+
+  userDataView.style.display = "block";
+}
+
+function currentDayLinkClick(event){
+  event.preventDefault();
+  
+  hiddenViews();
+
+  refreshCurrentDayViewData();
+  currentDayView.style.display = "block";
+}
+
 userForm.addEventListener("submit", submitUserForm);
 themeForm.addEventListener("submit", submitThemeForm);
 drinkWaterForm.addEventListener("submit", submitDrinkWaterForm);
+
+findDayLink.addEventListener("click", findDayLinkClick);
+themeLink.addEventListener("click", themeLinkClick);
+userDataLink.addEventListener("click", userDataLinkClick);
+currentDayLink.addEventListener("click", currentDayLinkClick);
 
 startApp();
 refreshViews();
