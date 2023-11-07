@@ -83,7 +83,7 @@ class DayService {
 
   /**
    * Retorna dados de um dia específico
-   * @param {string} dayDate Data do dia
+   * @param {string} dayDate Data do dia (dd/mm/aaaa)
    * @returns {DayDb.Day} Dados do dia informado
    */
   getDayData(dayDate) {
