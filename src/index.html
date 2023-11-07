@@ -73,6 +73,24 @@
           </form>
         </div> 
       </div>
+
+      <!-- Tema -->
+      <div id="theme">
+        <form id="themeForm">
+          <label for="backgroundColor">Cor do fundo:</label><br>
+          <input type="color" id="backgroundColor" name="backgroundColor" value="#ffffff"><br>
+          <br>
+
+          <label for="textColor">Cor do texto:</label><br>
+          <select id="textColor" name="textColor">
+            <option value="#000000">Escuro</option>
+            <option value="#ffffff">Claro</option>
+          </select><br>
+          <br>
+
+          <input type="submit" value="Salvar">
+        </form> 
+      </div>
     </section>
 
     <footer class="footer">
@@ -94,10 +112,12 @@
     const userForm = document.getElementById("userDataForm");
     const drinkWaterForm = document.getElementById("drinkWaterForm");
     const findDayForm = document.getElementById("findDayForm");
+    const themeForm = document.getElementById("themeForm");
 
     userForm.addEventListener("submit", submitForm);
     drinkWaterForm.addEventListener("submit", submitForm);
     findDayForm.addEventListener("submit", submitForm);
+    themeForm.addEventListener("submit", submitForm);
   </script>
 </body>
 </html>
