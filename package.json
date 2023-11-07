@@ -1,0 +1,13 @@
+{
+  "name": "drink-water-web-app",
+  "version": "0.2.0",
+  "description": "Drink Water!",
+  "scripts": {
+    "dev": "node dev-server.js"
+  },
+  "author": "Cedric Matheus",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
