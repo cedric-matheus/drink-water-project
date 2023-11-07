@@ -42,6 +42,6 @@ body {
   justify-content: center;
 }
 
-#userData, #currentDay, #findDay {
+#userData, #currentDay, #findDay, #theme {
   display: none;
 }

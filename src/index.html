@@ -97,27 +97,6 @@
       Não esqueça de beber água!
     </footer>
   </div>
-  <script>
-    function submitForm(event){
-      event.preventDefault();
-
-      const data = new FormData(event.target);
-      const dataObject = Object.fromEntries(data.entries());
-
-      console.log(event);
-      console.log(data);
-      console.log(dataObject);
-    }
-
-    const userForm = document.getElementById("userDataForm");
-    const drinkWaterForm = document.getElementById("drinkWaterForm");
-    const findDayForm = document.getElementById("findDayForm");
-    const themeForm = document.getElementById("themeForm");
-
-    userForm.addEventListener("submit", submitForm);
-    drinkWaterForm.addEventListener("submit", submitForm);
-    findDayForm.addEventListener("submit", submitForm);
-    themeForm.addEventListener("submit", submitForm);
-  </script>
+  <script type="module" src="./index.js"></script>
 </body>
 </html>
