@@ -35,6 +35,25 @@
           <input type="submit" value="Salvar">
         </form> 
       </div>
+
+      <!-- Dia Corrente -->
+      <div id="currentDay">
+        <div>
+          <h2>07/11/2023</h2>
+          <h3>Total de água no dia: 2000ml a 2640ml</h3>
+          <h3>Total de água restante: 1400ml a 2040ml</h3>
+          <h3>Total de água ingerido: 600ml</h3>
+        </div>
+        <div>
+          <form id="drinkWaterForm">
+            <label for="totalWaterDrunk">Total de água bebida em ml:</label><br>
+            <input type="number" id="totalWaterDrunk" name="totalWaterDrunk" value="300"><br>
+            <br>
+
+            <input type="submit" value="Beber">
+          </form>
+        </div> 
+      </div>
     </section>
 
     <footer class="footer">
@@ -54,8 +73,10 @@
     }
 
     const userForm = document.getElementById("userDataForm");
+    const drinkWaterForm = document.getElementById("drinkWaterForm");
 
     userForm.addEventListener("submit", submitForm);
+    drinkWaterForm.addEventListener("submit", submitForm);
   </script>
 </body>
 </html>
