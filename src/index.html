@@ -9,6 +9,56 @@
   <title>Drink Water!</title>
 </head>
 <body>
+  <!-- Menu Template-->
+  <template id="menuTemplate">
+    <script type="module">
+      import * as Renders from './renders.js';
+
+      const findDayLink = document.getElementById("findDayLink");
+      const themeLink = document.getElementById("themeLink");
+      const userDataLink = document.getElementById("userDataLink");
+      const currentDayLink = document.getElementById("currentDayLink");
+
+      function findDayLinkClick(event){
+        event.preventDefault();
+        
+        Renders.clearMainSection();
+        Renders.renderFindDayTemplate();
+      }
+
+      function themeLinkClick(event){
+        event.preventDefault();
+        
+        Renders.clearMainSection();
+        Renders.renderThemeTemplate();
+      }
+
+      function userDataLinkClick(event){
+        event.preventDefault();
+        
+        Renders.clearMainSection();
+        Renders.renderUserDataTemplate();
+      }
+
+      function currentDayLinkClick(event){
+        event.preventDefault();
+
+        Renders.clearMainSection();
+        Renders.renderCurrentDayTemplate();
+      }
+
+      findDayLink.addEventListener("click", findDayLinkClick);
+      themeLink.addEventListener("click", themeLinkClick);
+      userDataLink.addEventListener("click", userDataLinkClick);
+      currentDayLink.addEventListener("click", currentDayLinkClick);
+    </script>
+    <nav>
+      <button id="findDayLink">Buscar Dia</button>
+      <button id="themeLink">Alterar Tema</button>
+      <button id="userDataLink">Dados do Usuário</button>
+      <button id="currentDayLink">Dia Corrente</button>
+    </nav>
+  </template>
   
   <div class="main">
     <header class="header">
@@ -16,90 +66,12 @@
     </header>
 
     
-    <section class="body">
-      <!-- Dados do usuário -->
-      <div id="userData">
-        <form id="userDataForm">
-          <label for="userWeight">Peso em Kg:</label><br>
-          <input type="number" id="userWeight" name="userWeight" value="70.00" step="0.01"><br>
-          <br>
-
-          <label for="userDailyPhysicalActivity">Nível de atividade física diária:</label><br>
-          <select id="userDailyPhysicalActivity" name="userDailyPhysicalActivity">
-            <option value="0">Baixo</option>
-            <option value="1">Moderado</option>
-            <option value="2">Alto</option>
-          </select><br>
-          <br>
-
-          <input type="submit" value="Salvar">
-        </form> 
-      </div>
-
-      <!-- Dia Corrente -->
-      <div id="currentDay">
-        <div>
-          <h2 id="currentDayDate"></h2>
-          <h3 id="currentDayTotalWater"></h3>
-          <h3 id="currentDayDrunkWaterDifference"></h3>
-          <h3 id="currentDayTotalDrunkWater"></h3>
-        </div>
-        <div>
-          <form id="drinkWaterForm">
-            <label for="totalWaterDrunk">Total de água bebida em ml:</label><br>
-            <input type="number" id="totalWaterDrunk" name="totalWaterDrunk" value="300"><br>
-            <br>
-
-            <input type="submit" value="Beber">
-          </form>
-        </div> 
-      </div>
-
-      <!-- Buscar Dia -->
-      <div id="findDay">
-        <div>
-          <h2 id="findDayDate"></h2>
-          <h3 id="findDayTotalWater"></h3>
-          <h3 id="findDayDrunkWaterDifference"></h3>
-          <h3 id="findDayTotalDrunkWater"></h3>
-        </div>
-        <div>
-          <form id="findDayForm">
-            <label for="dayDate">Total de água bebida em ml:</label><br>
-            <input type="date" id="dayDate" name="dayDate" value="2023-11-07"><br>
-            <br>
-
-            <input type="submit" value="Buscar">
-          </form>
-        </div> 
-      </div>
-
-      <!-- Tema -->
-      <div id="theme">
-        <form id="themeForm">
-          <label for="backgroundColor">Cor do fundo:</label><br>
-          <input type="color" id="backgroundColor" name="backgroundColor" value="#ffffff"><br>
-          <br>
-
-          <label for="textColor">Cor do texto:</label><br>
-          <select id="textColor" name="textColor">
-            <option value="#000000">Escuro</option>
-            <option value="#ffffff">Claro</option>
-          </select><br>
-          <br>
-
-          <input type="submit" value="Salvar">
-        </form> 
-      </div>
+    <section id="mainSection" class="body">
+      
     </section>
 
-    <footer class="footer">
-      <nav>
-        <button id="findDayLink">Buscar Dia</button>
-        <button id="themeLink">Alterar Tema</button>
-        <button id="userDataLink">Dados do Usuário</button>
-        <button id="currentDayLink">Dia Corrente</button>
-      </nav>
+    <footer id="footerSection" class="footer">
+      
     </footer>
   </div>
   <script type="module" src="./index.js"></script>

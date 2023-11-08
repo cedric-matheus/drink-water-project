@@ -58,7 +58,3 @@ body {
   align-items: center;
   justify-content: space-around;
 }
-
-#userData, #currentDay, #findDay, #theme {
-  display: none;
-}
